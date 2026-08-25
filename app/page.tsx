@@ -5,7 +5,7 @@ export default function Home() {
   const age:number = getAge("2002-10-27")
   const reside:number = getAge("2019-10-22")
   return (
-    <div className="flex flex-col flex-1 items-center justify-between bg-zinc-50 font-sans dark:bg-black">
+    <div className="flex flex-col flex-1 items-center justify-between bg-zinc-50 font-sans">
       <Header/>
       <main className="flex flex-1 w-full p-10 flex-col items-start justify-start">
         <div className="flex">
