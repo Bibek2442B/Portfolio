@@ -59,12 +59,13 @@ export default function Home() {
           <aside
             className={"flex flex-col fixed top-0 right-0 h-full bg-background w-50 max-w-[85vw] p-4"}
           >
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className={"self-end"}
-            >
-              <X />
-            </button>
+            <ButtonIcon className={"self-end"}>
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
+              >
+                <X />
+              </button>
+            </ButtonIcon>
             {details.sections.map((section:string) =>
               <Link
                 className={"mx-1"}
