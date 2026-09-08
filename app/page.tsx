@@ -8,6 +8,7 @@ import data from '@/public/data/data.json';
 import Link from "next/link";
 import {Menu, X} from "lucide-react";
 import React, {useState} from "react";
+import ButtonIcon from "@/components/ButtonIcon";
 
 export default function Home() {
   const details: Data = data;
@@ -36,14 +37,14 @@ export default function Home() {
               </Link>)
             }
           </div>
-          <div className={"flex items-center justify-center border-[0.5px] border-border rounded  mx-2 p-1 md:hidden"}>
-            <button
-              className={"md:hidden"}
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              <Menu/>
-            </button>
-          </div>
+            <ButtonIcon className={"md:hidden"}>
+              <button
+                className={"md:hidden"}
+                onClick={() => setMenuOpen(!menuOpen)}
+              >
+                <Menu/>
+              </button>
+            </ButtonIcon>
         </div>
 
       </nav>

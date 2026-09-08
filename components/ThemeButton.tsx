@@ -1,6 +1,7 @@
 import {useTheme} from "next-themes";
 import {Sun, Moon} from "lucide-react";
 import {useSyncExternalStore} from "react";
+import ButtonIcon from "@/components/ButtonIcon";
 
 export default function ThemeToggle(){
   const {theme, setTheme} = useTheme();
@@ -11,13 +12,13 @@ export default function ThemeToggle(){
   )
   if (!mounted) return null;
   return (
-    <div className={"flex items-center justify-center border-[0.5px] border-border rounded  mx-2 p-1"}>
+    <ButtonIcon>
       <button
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         aria-label="Toggle theme"
       >
         {theme === "dark" ? <Sun/> : <Moon/>}
       </button>
-    </div>
+    </ButtonIcon>
   );
 }

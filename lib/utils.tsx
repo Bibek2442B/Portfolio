@@ -1,5 +1,5 @@
-import {useTheme} from "next-themes";
-import {useEffect, useState} from "react";
+import clsx, {ClassValue} from "clsx";
+import {twMerge} from "tailwind-merge";
 
 export function getAge(dateOfBirth: string | Date): number {
   const today = new Date();
@@ -12,4 +12,8 @@ export function getAge(dateOfBirth: string | Date): number {
     age--;
   }
   return age;
+}
+
+export function cn(...inputs:ClassValue[]): string {
+  return twMerge(clsx(inputs));
 }
