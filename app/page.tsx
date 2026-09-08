@@ -1,12 +1,14 @@
 'use client';
 import Image from "next/image";
 import {getAge} from '@/lib/utils';
+import ThemeToggle from "@/components/ThemeButton";
 
 import {Data} from '@/types';
 import data from '@/public/data/data.json';
 import Link from "next/link";
 import {Menu, X} from "lucide-react";
-import {useState} from "react";
+import React, {useState} from "react";
+import IconButton from "@/components/IconButton";
 
 export default function Home() {
   const details: Data = data;
@@ -22,21 +24,29 @@ export default function Home() {
         >
           {details.name}
         </Link>
-        <div className={"hidden md:flex"}>
-          {details.sections.map((section:string) =>
-            <Link
-              className={"mx-1"}
-              key={section} href={"#"}>
-              {section}
-            </Link>)
-          }
+
+        <div className={"flex"}>
+          <ThemeToggle/>
+          <div className={"hidden md:flex"}>
+            {details.sections.map((section:string) =>
+              <Link
+                className={"mx-1"}
+                key={section} href={"#"}
+              >
+                {section}
+              </Link>)
+            }
+          </div>
+          <IconButton>
+            <button
+              className={"md:hidden"}
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              <Menu/>
+            </button>
+          </IconButton>
         </div>
-        <button
-          className={"md:hidden"}
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <Menu/>
-        </button>
+
       </nav>
 
       {menuOpen && (
@@ -65,6 +75,8 @@ export default function Home() {
           </aside>
         </>
       )}
+
+
       <div className="flex flex-col flex-1 items-center justify-between bg-zinc-50 font-sans">
         <main className="flex flex-1 w-full p-10 flex-col items-start justify-start">
           <div className="flex">

@@ -1,3 +1,6 @@
+import {useTheme} from "next-themes";
+import {useEffect, useState} from "react";
+
 export function getAge(dateOfBirth: string | Date): number {
   const today = new Date();
   const dob= typeof dateOfBirth === "string" ? new Date(dateOfBirth) : dateOfBirth;
@@ -10,4 +13,3 @@ export function getAge(dateOfBirth: string | Date): number {
   }
   return age;
 }
-
