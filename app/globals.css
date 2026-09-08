@@ -3,16 +3,34 @@
 :root {
   --background: #0a192f;
   --foreground: #ededed;
+  --bg-alt: #112240;
+  --text: #ccd6f6;
+  --text-muted: #8892b0;
+  --accent: #64ffda;
+  --card: #112240;
+  --border: rgba(100, 255, 218, 0.1);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-bg-alt: var(--bg-alt);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-card: var(--card);
+  --color-border: var(--border);
 }
 
 .light{
   --background: #fdfdfd;
   --foreground: #171717;
+  --bg-alt: #f5f7fa;
+  --text: #1a2b4a;
+  --text-muted: #4a5878;
+  --accent: #0aa88f;
+  --card: #ffffff;
+  --border: rgba(10, 168, 143, 0.15);
 }
 
 body {

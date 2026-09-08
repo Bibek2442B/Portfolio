@@ -8,7 +8,6 @@ import data from '@/public/data/data.json';
 import Link from "next/link";
 import {Menu, X} from "lucide-react";
 import React, {useState} from "react";
-import IconButton from "@/components/IconButton";
 
 export default function Home() {
   const details: Data = data;
@@ -25,26 +24,26 @@ export default function Home() {
           {details.name}
         </Link>
 
-        <div className={"flex"}>
+        <div className={"flex items-center justify-center"}>
           <ThemeToggle/>
           <div className={"hidden md:flex"}>
             {details.sections.map((section:string) =>
               <Link
-                className={"mx-1"}
+                className={"mx-2"}
                 key={section} href={"#"}
               >
                 {section}
               </Link>)
             }
           </div>
-          <IconButton>
+          <div className={"flex items-center justify-center border-[0.5px] border-border rounded  mx-2 p-1 md:hidden"}>
             <button
               className={"md:hidden"}
               onClick={() => setMenuOpen(!menuOpen)}
             >
               <Menu/>
             </button>
-          </IconButton>
+          </div>
         </div>
 
       </nav>
