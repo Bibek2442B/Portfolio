@@ -17,26 +17,27 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
     <>
-      <nav className={"w-full flex items-center justify-between p-4"}>
-        <Link
-          key={details.name}
-          href={"#"}
-        >
-          {details.name}
-        </Link>
+      <div className="flex flex-col min-h-screen">
+        <nav className={"w-full flex items-center justify-between p-4 border-b"}>
+          <Link
+            key={details.name}
+            href={"#"}
+          >
+            {details.name}
+          </Link>
 
-        <div className={"flex items-center justify-center"}>
-          <ThemeToggle/>
-          <div className={"hidden md:flex"}>
-            {details.sections.map((section:string) =>
-              <Link
-                className={"mx-2"}
-                key={section} href={"#"}
-              >
-                {section}
-              </Link>)
-            }
-          </div>
+          <div className={"flex items-center justify-center"}>
+            <ThemeToggle/>
+            <div className={"hidden md:flex"}>
+              {details.sections.map((section:string) =>
+                <Link
+                  className={"mx-2"}
+                  key={section} href={"#"}
+                >
+                  {section}
+                </Link>)
+              }
+            </div>
             <ButtonIcon className={"md:hidden"}>
               <button
                 className={"md:hidden"}
@@ -45,59 +46,67 @@ export default function Home() {
                 <Menu/>
               </button>
             </ButtonIcon>
-        </div>
-
-      </nav>
-
-      {menuOpen && (
-        <>
-          <div
-            className={"fixed inset-0 bg-black/60"}
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-hidden={true}
-          />
-          <aside
-            className={"flex flex-col fixed top-0 right-0 h-full bg-background w-50 max-w-[85vw] p-4"}
-          >
-            <ButtonIcon className={"self-end"}>
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-              >
-                <X />
-              </button>
-            </ButtonIcon>
-            {details.sections.map((section:string) =>
-              <Link
-                className={"mx-1"}
-                key={section} href={"#"}>
-                {section}
-              </Link>)
-            }
-          </aside>
-        </>
-      )}
-
-
-      <div className="flex flex-col flex-1 items-center justify-between bg-zinc-50 font-sans">
-        <main className="flex flex-1 w-full p-10 flex-col items-start justify-start">
-          <div className="flex">
-            <Image
-              src="/images/BibekPic.jpeg"
-              alt="User Profile"
-              width={120}
-              height={120}
-              className="rounded-full object-cover w-auto"
-            />
-            <p className="text-2xl mx-10 my-4">
-              I am Bibek Gnawali. I am {age} years old. I am originally from Nepal and have been residing in Portugal for {reside} years.
-            </p>
           </div>
 
-        </main>
-        <footer>
+        </nav>
 
-        </footer>
+        {menuOpen && (
+          <>
+            <div
+              className={"fixed inset-0 bg-black/60"}
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-hidden={true}
+            />
+            <aside
+              className={"flex flex-col fixed top-0 right-0 h-full bg-background w-50 max-w-[85vw] p-4"}
+            >
+              <ButtonIcon className={"self-end"}>
+                <button
+                  onClick={() => setMenuOpen(!menuOpen)}
+                >
+                  <X />
+                </button>
+              </ButtonIcon>
+              {details.sections.map((section:string) =>
+                <Link
+                  className={"mx-1"}
+                  key={section} href={"#"}>
+                  {section}
+                </Link>)
+              }
+            </aside>
+          </>
+        )}
+
+        <section id={"home"} className={"p-4 flex flex-col justify-center items-center flex-1"} >
+          <div>
+            <p className={"text-accent text-xl my-4"}>Hi, my name is</p>
+            <h1 className={"text-4xl my-4"}>Bibek Gnawali</h1>
+            <p className={"text-xl text-text"}>I am an Informatics Engineer based in Portugal, passionate about crafting, clean, efficient, and user-focused digital experiences. Graduated from the Polytechnic University of Bragança.</p>
+          </div>
+        </section>
       </div>
+
+      <section id={"about"}>
+
+      </section>
+
+      <section id={"skills"}>
+
+      </section>
+
+      <section id={"education"}>
+
+      </section>
+
+      <section id={"projects"}>
+
+      </section>
+
+      <section id={"contact"}>
+
+      </section>
+
     </>
 
   );
