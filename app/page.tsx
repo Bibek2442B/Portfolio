@@ -23,7 +23,7 @@ export default function Home() {
             key={details.name}
             href={"#"}
           >
-            {details.name}
+            <h1 className={"text-2xl font-bold font-mono"}>{details.name}</h1>
           </Link>
 
           <div className={"flex items-center justify-center"}>
@@ -47,7 +47,6 @@ export default function Home() {
               </button>
             </ButtonIcon>
           </div>
-
         </nav>
 
         {menuOpen && (
@@ -87,8 +86,18 @@ export default function Home() {
         </section>
       </div>
 
-      <section id={"about"}>
+      <section
+        id={"about"}
+        className={"p-4 flex flex-col justify-center items-center flex-1"}
+      >
+        <h1 className={"text-4xl font-bold my-4"}>About Me</h1>
+        <p>
+          Hello! I'm Bibek, a 23-year-old Nepalese developer who has called Portugal home for the last 6 years. My journey into technology began with curiosity about how things work under the hood — and it hasn't stopped since.
 
+          I recently completed my Bachelor's in Informatics Engineering at the Polytechnic Institute of Bragança, where I honed my skills in software development, algorithms, databases, and system design.
+
+          I love turning complex problems into simple, beautiful solutions. When I'm not coding, you'll probably find me exploring new tech, contributing to side projects, or discovering Portugal's beautiful landscapes.
+        </p>
       </section>
 
       <section id={"skills"}>

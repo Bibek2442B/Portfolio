@@ -17,7 +17,7 @@ export default function ThemeToggle(){
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         aria-label="Toggle theme"
       >
-        {theme === "dark" ? <Sun/> : <Moon/>}
+        {theme !== "dark" ? <Sun className={"text-orange-400 fill-orange-400"}/> : <Moon className={"text-yellow-500 fill-yellow-500"}/>}
       </button>
     </ButtonIcon>
   );
