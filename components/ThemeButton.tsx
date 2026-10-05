@@ -12,7 +12,9 @@ export default function ThemeToggle(){
   )
   if (!mounted) return null;
   return (
-    <ButtonIcon>
+    <ButtonIcon
+      className={"border-accent"}
+    >
       <button
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         aria-label="Toggle theme"

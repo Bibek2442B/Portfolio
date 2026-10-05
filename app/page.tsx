@@ -27,26 +27,27 @@ export default function Home() {
             key={details.name}
             href={"#"}
           >
-            <h1 className={"text-2xl font-outfit"}>
-              <span className={"text-accent"}> {`< `}</span>
+            <h1 className={"font-extrabold font-outfit "}>
+              <span className={"text-accent font-fira-code font-bold"}> {`< `}</span>
               {`${header.titleName}`}
-              <span className={"text-accent"}> {` />`}</span>
+              <span className={"text-accent font-fira-code font-bold"}> {` />`}</span>
             </h1>
           </Link>
 
           <div className={"flex items-center justify-center"}>
-            <ThemeToggle/>
             <div className={"hidden md:flex"}>
               {details.sections.map((section:string) =>
                 <Link
-                  className={"mx-2"}
+                  className={"mx-4"}
                   key={section} href={"#"}
                 >
-                  {section}
+                  <p className={"font-fira-code font-medium text-text"}>
+                    {`./${section}`}
+                  </p>
                 </Link>)
               }
             </div>
-            <ButtonIcon className={"md:hidden"}>
+            <ButtonIcon className={"md:hidden border-accent"}>
               <button
                 className={"md:hidden"}
                 onClick={() => setMenuOpen(!menuOpen)}
@@ -54,6 +55,7 @@ export default function Home() {
                 <Menu/>
               </button>
             </ButtonIcon>
+            <ThemeToggle/>
           </div>
         </nav>
 
@@ -65,9 +67,9 @@ export default function Home() {
               aria-hidden={true}
             />
             <aside
-              className={"flex flex-col fixed top-0 right-0 h-full bg-background w-50 max-w-[85vw] p-4"}
+              className={"flex flex-col fixed top-0 right-0 h-full bg-background w-40 max-w-[85vw] p-4"}
             >
-              <ButtonIcon className={"self-end"}>
+              <ButtonIcon className={"self-end border-accent"}>
                 <button
                   onClick={() => setMenuOpen(!menuOpen)}
                 >
@@ -76,7 +78,7 @@ export default function Home() {
               </ButtonIcon>
               {details.sections.map((section:string) =>
                 <Link
-                  className={"mx-1"}
+                  className={"m-4 font-fira-code"}
                   key={section} href={"#"}>
                   {section}
                 </Link>)
