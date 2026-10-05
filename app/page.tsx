@@ -15,15 +15,23 @@ export default function Home() {
   const age:number = getAge(details.dob);
   const reside:number = getAge(details.residentSince);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const header={
+    titleName: details.name.split(' ')[0] + '.' + details.name.split(' ')[1].split('')[0]
+  };
   return (
     <>
       <div className="flex flex-col min-h-screen">
-        <nav className={"w-full flex items-center justify-between p-4 border-b"}>
+        <nav className={"w-full flex items-center justify-between p-4 bg-bg-alt border-border"}>
           <Link
             key={details.name}
             href={"#"}
           >
-            <h1 className={"text-2xl font-bold font-mono"}>{details.name}</h1>
+            <h1 className={"text-2xl font-outfit"}>
+              <span className={"text-accent"}> {`< `}</span>
+              {`${header.titleName}`}
+              <span className={"text-accent"}> {` />`}</span>
+            </h1>
           </Link>
 
           <div className={"flex items-center justify-center"}>
@@ -77,7 +85,7 @@ export default function Home() {
           </>
         )}
 
-        <section id={"home"} className={"p-4 flex flex-col justify-center items-center flex-1"} >
+        <section id={"home"} className={"p-4 flex flex-col justify-center items-center flex-1 bg-background"} >
           <div>
             <p className={"text-accent text-xl my-4"}>Hi, my name is</p>
             <h1 className={"text-4xl my-4"}>Bibek Gnawali</h1>

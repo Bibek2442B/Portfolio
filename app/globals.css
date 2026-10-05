@@ -9,7 +9,6 @@
   --accent: #00F0FF;
   --card: #121A2C;
   --border: #1E293B;
-
 }
 
 @theme inline {
@@ -32,6 +31,12 @@
   --accent: #00838F;
   --card: #FFFFFF;
   --border: #E2E8F0;
+}
+
+@theme {
+  --font-geist: var(--font-geist);
+  --font-fira-code: var(--font-fira-code);
+  --font-outfit: var(--font-outfit);
 }
 
 body {
