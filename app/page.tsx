@@ -1,26 +1,16 @@
 'use client';
-import Image from "next/image";
-import {getAge} from '@/lib/utils';
-import ThemeToggle from "@/components/ThemeButton";
-
 import {Data} from '@/types';
 import data from '@/public/data/data.json';
 import Link from "next/link";
-import {Menu, X, Dot} from "lucide-react";
+import {X, Dot} from "lucide-react";
 import React, {useState} from "react";
 import ButtonIcon from "@/components/ButtonIcon";
 import NavigationBar from "@/components/NavigationBar";
+import SideMenu from "@/components/SideMenu";
 
 export default function Home() {
   const details: Data = data;
-  const age:number = getAge(details.dob);
-  const reside:number = getAge(details.residentSince);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const header={
-    titleName: details.name.split(' ')[0] + '.' + details.name.split(' ')[1].split('')[0],
-    sections: details.sections.map((section:string) => section.toLowerCase()),
-  };
 
   return (
     <>
@@ -28,31 +18,7 @@ export default function Home() {
         <NavigationBar menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
 
         {menuOpen && (
-          <>
-            <div
-              className={"fixed inset-0 bg-black/60"}
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-hidden={true}
-            />
-            <aside
-              className={"flex flex-col fixed top-0 right-0 h-full bg-background w-40 max-w-[85vw] p-4"}
-            >
-              <ButtonIcon className={"self-end border-accent"}>
-                <button
-                  onClick={() => setMenuOpen(!menuOpen)}
-                >
-                  <X />
-                </button>
-              </ButtonIcon>
-              {header.sections.map((section:string) =>
-                <Link
-                  className={"m-4 font-fira-code"}
-                  key={section} href={"#"}>
-                  {section}
-                </Link>)
-              }
-            </aside>
-          </>
+          <SideMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}/>
         )}
 
         <section id={"home"} className={"p-4 flex flex-col md:flex-row justify-between items-center bg-background min-h-[calc(100vh-64px)]"} >
