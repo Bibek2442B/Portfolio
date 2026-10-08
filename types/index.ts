@@ -3,4 +3,5 @@ export interface Data{
   dob: string;
   residentSince: string;
   sections: string[];
+  status: string;
 }
