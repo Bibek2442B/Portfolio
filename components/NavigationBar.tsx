@@ -15,6 +15,7 @@ export default function NavigationBar({menuOpen, setMenuOpen}: {menuOpen: boolea
         <Link
           key={details.name}
           href={"#"}
+          aria-label={"Home"}
         >
           <h1 className={"font-extrabold font-outfit "}>
             <span className={"text-accent font-fira-code font-bold"}> {`< `}</span>
@@ -29,6 +30,7 @@ export default function NavigationBar({menuOpen, setMenuOpen}: {menuOpen: boolea
               <Link
                 className={"mx-4"}
                 key={section} href={"#"}
+                aria-label={section}
               >
                 <p className={"font-fira-code font-medium text-text"}>
                   {`./${section}`}
@@ -40,6 +42,10 @@ export default function NavigationBar({menuOpen, setMenuOpen}: {menuOpen: boolea
             <button
               className={"md:hidden"}
               onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={"Open Menu"}
+              aria-hidden={menuOpen}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
             >
               <Menu/>
             </button>

@@ -13,14 +13,21 @@ export default function SideMenu({menuOpen, setMenuOpen}: {menuOpen:boolean, set
       <div
         className={"fixed inset-0 bg-black/60"}
         onClick={() => setMenuOpen(!menuOpen)}
-        aria-hidden={true}
+        aria-hidden={!menuOpen}
+        aria-expanded={!menuOpen}
+        aria-controls="mobile-menu"
       />
       <aside
+        id="mobile-menu"
         className={"flex flex-col fixed top-0 right-0 h-full bg-background w-40 max-w-[85vw] p-4"}
       >
         <ButtonIcon className={"self-end border-accent"}>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={"Close Menu"}
+            aria-controls="mobile-menu"
+            aria-expanded={menuOpen}
+            aria-hidden={!menuOpen}
           >
             <X />
           </button>
@@ -28,7 +35,10 @@ export default function SideMenu({menuOpen, setMenuOpen}: {menuOpen:boolean, set
         {links.map((section:string) =>
           <Link
             className={"m-4 font-fira-code"}
-            key={section} href={"#"}>
+            key={section}
+            href={"#"}
+            aria-label={section}
+          >
             {section}
           </Link>)
         }
