@@ -21,7 +21,7 @@ export default function SideMenu({menuOpen, setMenuOpen}: {menuOpen:boolean, set
       }
       <aside
         id="mobile-menu"
-        className={"flex flex-col fixed top-0 right-0 h-full bg-background w-40 max-w-[85vw] p-4 transition-transform duration-500 ease-in-out will-change-transform" + (menuOpen ? ' translate-x-0' : ' translate-x-full')}
+        className={"flex flex-col fixed top-0 right-0 z-50 h-full bg-background w-40 max-w-[85vw] p-4 transition-transform duration-500 ease-in-out will-change-transform" + (menuOpen ? ' translate-x-0' : ' translate-x-full')}
         aria-hidden={!menuOpen}
       >
         <ButtonIcon className={"self-end border-accent"}>
