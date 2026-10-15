@@ -4,14 +4,41 @@ import Link from "next/link";
 import ButtonIcon from "@/components/ButtonIcon";
 import {Menu} from "lucide-react";
 import ThemeToggle from "@/components/ThemeButton";
-import React from "react";
-export default function NavigationBar({menuOpen, setMenuOpen}: {menuOpen: boolean, setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>}) {
+import {Dispatch, SetStateAction, useEffect, useState} from "react";
+export default function NavigationBar({menuOpen, setMenuOpen}: {menuOpen: boolean, setMenuOpen: Dispatch<SetStateAction<boolean>>}) {
   const details: Data = data;
   const title: string = details.name.split(' ')[0] + '.' + details.name.split(' ')[1].slice(0, 1).toUpperCase();
   const links: string[] = details.sections.map((section:string) => section.toLowerCase());
+
+  const [isVisible, setIsVisible] = useState(true);
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const delta = currentScrollY - lastScrollY;
+
+      if (currentScrollY <= 10) {
+        setIsVisible(true);
+        lastScrollY = currentScrollY;
+      } else if (delta > 10) {
+        setIsVisible(false);
+        lastScrollY = currentScrollY;
+      } else if (delta < -10) {
+        setIsVisible(true);
+        lastScrollY = currentScrollY;
+      }
+
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <nav className={"w-full flex items-center justify-between p-4 bg-bg-alt border-border"}>
+      <nav className={`fixed top-0 inset-x-0 flex items-center justify-between p-4 bg-bg-alt border-border transition-transform duration-300 will-change-transform z-50 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
         <Link
           key={details.name}
           href={"#"}
