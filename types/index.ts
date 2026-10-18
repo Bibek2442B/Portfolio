@@ -5,3 +5,8 @@ export interface Data{
   sections: string[];
   status: string;
 }
+
+export interface Command{
+  command: string;
+  output: string;
+}
