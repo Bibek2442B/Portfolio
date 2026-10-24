@@ -11,8 +11,6 @@ export default function MyTerminal(){
     scrollRef.current?.scrollTo({top: scrollRef.current.scrollHeight, behavior: "smooth"});
   }, [history]);
 
-  if (history.length === 0) setHistory([{command: "ls", output: "file1 file2 file3"}]);
-
   const handleKeyDown= (e:React.KeyboardEvent<HTMLInputElement>)=>{
     if (e.key === "Enter"){
       if (inputValue === "") return;
@@ -23,7 +21,19 @@ export default function MyTerminal(){
 
   const handleKeyUp= (e:React.KeyboardEvent<HTMLInputElement>)=>{
     if (e.key === "ArrowUp"){
-      if (inputRef.current) inputRef.current.value = history[history.length - 1].command;
+      if (inputRef.current){
+        if (inputRef.current.value === ""){
+          if (history.length === 0) return;
+          inputRef.current.value = history[history.length - 1].command;
+          setInputValue(inputRef.current.value);
+        }
+        else if (history.map((item)=>item.command).includes(inputRef.current.value)){
+          const index = history.map((item)=>item.command).indexOf(inputRef.current.value);
+          if (index === 0) return;
+          inputRef.current.value = history[index - 1].command;
+          setInputValue(inputRef.current.value);
+        }
+      }
     }
   }
   return(
