@@ -7,35 +7,20 @@ export default function MyTerminal(){
   const scrollRef = useRef<HTMLDivElement>(null);
   const [inputValue, setInputValue] = useState("");
 
+
   useEffect(()=>{
     scrollRef.current?.scrollTo({top: scrollRef.current.scrollHeight, behavior: "smooth"});
   }, [history]);
 
   const handleKeyDown= (e:React.KeyboardEvent<HTMLInputElement>)=>{
     if (e.key === "Enter"){
+      setInputValue(inputRef.current?.value || "");
       if (inputValue === "") return;
       setHistory([...history, {command: inputValue, output: "output"}]);
       setInputValue("");
     }
   }
 
-  const handleKeyUp= (e:React.KeyboardEvent<HTMLInputElement>)=>{
-    if (e.key === "ArrowUp"){
-      if (inputRef.current){
-        if (inputRef.current.value === ""){
-          if (history.length === 0) return;
-          inputRef.current.value = history[history.length - 1].command;
-          setInputValue(inputRef.current.value);
-        }
-        else if (history.map((item)=>item.command).includes(inputRef.current.value)){
-          const index = history.map((item)=>item.command).indexOf(inputRef.current.value);
-          if (index === 0) return;
-          inputRef.current.value = history[index - 1].command;
-          setInputValue(inputRef.current.value);
-        }
-      }
-    }
-  }
   return(
     <>
       <div
@@ -71,7 +56,6 @@ export default function MyTerminal(){
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
-            onKeyUp={handleKeyUp}
           />
         </div>
       </div>
