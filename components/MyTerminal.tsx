@@ -14,9 +14,19 @@ export default function MyTerminal(){
 
   const handleKeyDown= (e:React.KeyboardEvent<HTMLInputElement>)=>{
     if (e.key === "Enter"){
-      setInputValue(inputRef.current?.value || "");
-      if (inputValue === "") return;
-      setHistory([...history, {command: inputValue, output: "output"}]);
+      const input:string = inputValue.trim().toLowerCase();
+      let output:string = "";
+      switch (input){
+        case "":
+          return;
+        case "clear":
+          setHistory([]);
+          setInputValue("");
+          return;
+        default:
+          output = "Invalid command! Type 'help' for a list of commands.";
+      }
+      setHistory([...history, {command: inputValue, output: output}]);
       setInputValue("");
     }
   }
