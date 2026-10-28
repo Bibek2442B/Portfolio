@@ -2,12 +2,17 @@ import React from "react";
 import ButtonIcon from "@/components/ButtonIcon";
 import {X} from "lucide-react";
 import Link from "next/link";
-import {Data} from "@/types";
+import {Data, NavLink} from "@/types";
 import data from "@/public/data/data.json";
 
 export default function SideMenu({menuOpen, setMenuOpen}: {menuOpen:boolean, setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>}) {
   const details: Data = data;
-  const links: string[] = details.sections.map((section:string) => section.toLowerCase());
+  const links: NavLink[] = details.sections.map((section:NavLink):NavLink => {
+    return {
+      "name": section.name.toLowerCase(),
+      "href":section.href.toLowerCase()
+    };
+  });
   return(
     <>
       {
@@ -34,14 +39,14 @@ export default function SideMenu({menuOpen, setMenuOpen}: {menuOpen:boolean, set
             <X />
           </button>
         </ButtonIcon>
-        {links.map((section:string) =>
+        {links.map((section:NavLink) =>
           <Link
             className={"m-4 font-fira-code"}
-            key={section}
-            href={"#"}
-            aria-label={section}
+            key={section.name}
+            href={section.href}
+            aria-label={section.name}
           >
-            {section}
+            {section.name}
           </Link>)
         }
       </aside>

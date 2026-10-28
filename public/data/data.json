@@ -2,6 +2,31 @@
  "name": "Bibek Gnawali",
  "dob": "2002-10-27",
  "residentSince": "2019-10-22",
- "sections": ["Home", "About", "Skills", "Education", "Projects", "Contact"],
+ "sections": [
+  {
+   "name": "Home",
+   "href": "#home"
+  },
+  {
+   "name": "About",
+   "href": "#about"
+  },
+  {
+   "name": "Skills",
+   "href": "#skills"
+  },
+  {
+   "name": "Education",
+   "href": "#education"
+  },
+  {
+   "name": "Projects",
+   "href": "#projects"
+  },
+  {
+   "name": "Contact",
+   "href": "#contact"
+  }
+ ],
  "status": "AVAILABLE FOR FULL-TIME ROLES"
 }

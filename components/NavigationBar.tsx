@@ -1,14 +1,20 @@
-import {Data} from '@/types';
+import {Data, NavLink} from '@/types';
 import data from '@/public/data/data.json';
 import Link from "next/link";
 import ButtonIcon from "@/components/ButtonIcon";
 import {Menu} from "lucide-react";
 import ThemeToggle from "@/components/ThemeButton";
 import {Dispatch, SetStateAction, useEffect, useState} from "react";
+
 export default function NavigationBar({menuOpen, setMenuOpen}: {menuOpen: boolean, setMenuOpen: Dispatch<SetStateAction<boolean>>}) {
   const details: Data = data;
   const title: string = details.name.split(' ')[0] + '.' + details.name.split(' ')[1].slice(0, 1).toUpperCase();
-  const links: string[] = details.sections.map((section:string) => section.toLowerCase());
+  const links: NavLink[] = details.sections.map((section:NavLink):NavLink => {
+    return {
+      "name": section.name.toLowerCase(),
+      "href":section.href.toLowerCase()
+    };
+  });
 
   const [isVisible, setIsVisible] = useState(true);
   useEffect(() => {
@@ -42,7 +48,7 @@ export default function NavigationBar({menuOpen, setMenuOpen}: {menuOpen: boolea
         <Link
           key={details.name}
           href={"#"}
-          aria-label={"Home"}
+          aria-label={"Bibek Gnawali's Portfolio"}
         >
           <h1 className={"font-extrabold font-outfit "}>
             <span className={"text-accent font-fira-code font-bold"}> {`< `}</span>
@@ -53,14 +59,14 @@ export default function NavigationBar({menuOpen, setMenuOpen}: {menuOpen: boolea
 
         <div className={"flex items-center justify-center"}>
           <div className={"hidden md:flex"}>
-            {links.map((section:string) =>
+            {links.map((section:NavLink) =>
               <Link
                 className={"mx-4"}
-                key={section} href={"#"}
-                aria-label={section}
+                key={section.name} href={section.href}
+                aria-label={section.name}
               >
                 <p className={"font-fira-code font-medium text-text"}>
-                  {`./${section}`}
+                  {`./${section.name}`}
                 </p>
               </Link>)
             }
