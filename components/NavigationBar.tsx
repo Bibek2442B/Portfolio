@@ -38,7 +38,7 @@ export default function NavigationBar({menuOpen, setMenuOpen}: {menuOpen: boolea
 
   return (
     <>
-      <nav className={`fixed top-0 inset-x-0 flex items-center justify-between p-4 bg-bg-alt border-border transition-transform duration-300 will-change-transform z-50 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+      <nav className={`fixed top-0 inset-x-0 z-50 pt-[env(safe-area-inset-top, 0px)] flex items-center justify-between p-4 bg-bg-alt border-border transition-transform duration-300 will-change-transform ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
         <Link
           key={details.name}
           href={"#"}
