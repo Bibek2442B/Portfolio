@@ -7,12 +7,7 @@ import data from "@/public/data/data.json";
 
 export default function SideMenu({menuOpen, setMenuOpen}: {menuOpen:boolean, setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>}) {
   const details: Data = data;
-  const links: NavLink[] = details.sections.map((section:NavLink):NavLink => {
-    return {
-      "name": section.name.toLowerCase(),
-      "href":section.href.toLowerCase()
-    };
-  });
+  const links: NavLink[] = details.sections;
   return(
     <>
       {

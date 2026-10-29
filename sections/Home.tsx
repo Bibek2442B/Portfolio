@@ -8,7 +8,7 @@ import MyTerminal from "@/components/MyTerminal";
 export default function Home() {
   const details: Data = data;
   return (
-    <section id={"home"} className={"p-4 flex flex-col md:flex-row justify-between items-center bg-background min-h-[calc(100vh-64px)]"} >
+    <section id={"home"} className={"p-4 px-12 flex flex-col md:flex-row justify-between items-center bg-background min-h-[calc(100vh-64px)]"} >
       <div className={"p-4 w-full md:max-w-[48%]"}>
         <p className={"bg-accent/10 border-accent/25 border rounded-full p-2 text-accent font-fira-code font-semibold text-xs inline"}>
           <Dot
